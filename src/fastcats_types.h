@@ -17,7 +17,6 @@ typedef std::vector<char> VecChar;
 typedef VecChar::iterator VecCharIt;
 typedef VecInt::const_iterator VecIntIt;
 // SOMEDAY: replace int with char, but this stops Rcpp::export working
-typedef VecInt ComorbidOut;
 typedef std::vector<VecStr> VecVecStr;
 typedef std::vector<VecInt> VecVecInt;
 typedef std::vector<VecBool> VecVecBool;

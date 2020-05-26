@@ -17,21 +17,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// comorbidMatMulWide
-LogicalMatrix comorbidMatMulWide(const DataFrame& data, const List& map, const std::string id_name, const CV code_names, const bool validate);
-RcppExport SEXP _fastcats_comorbidMatMulWide(SEXP dataSEXP, SEXP mapSEXP, SEXP id_nameSEXP, SEXP code_namesSEXP, SEXP validateSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const DataFrame& >::type data(dataSEXP);
-    Rcpp::traits::input_parameter< const List& >::type map(mapSEXP);
-    Rcpp::traits::input_parameter< const std::string >::type id_name(id_nameSEXP);
-    Rcpp::traits::input_parameter< const CV >::type code_names(code_namesSEXP);
-    Rcpp::traits::input_parameter< const bool >::type validate(validateSEXP);
-    rcpp_result_gen = Rcpp::wrap(comorbidMatMulWide(data, map, id_name, code_names, validate));
-    return rcpp_result_gen;
-END_RCPP
-}
 // fastIntToStringRcpp
 CharacterVector fastIntToStringRcpp(IntegerVector x);
 RcppExport SEXP _fastcats_fastIntToStringRcpp(SEXP xSEXP) {
@@ -40,6 +25,21 @@ BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< IntegerVector >::type x(xSEXP);
     rcpp_result_gen = Rcpp::wrap(fastIntToStringRcpp(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// matMulWide
+LogicalMatrix matMulWide(const DataFrame& data, const List& map, const std::string id_name, const CV code_names, const bool validate);
+RcppExport SEXP _fastcats_matMulWide(SEXP dataSEXP, SEXP mapSEXP, SEXP id_nameSEXP, SEXP code_namesSEXP, SEXP validateSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const DataFrame& >::type data(dataSEXP);
+    Rcpp::traits::input_parameter< const List& >::type map(mapSEXP);
+    Rcpp::traits::input_parameter< const std::string >::type id_name(id_nameSEXP);
+    Rcpp::traits::input_parameter< const CV >::type code_names(code_namesSEXP);
+    Rcpp::traits::input_parameter< const bool >::type validate(validateSEXP);
+    rcpp_result_gen = Rcpp::wrap(matMulWide(data, map, id_name, code_names, validate));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -97,8 +97,8 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_fastcats_categorize_rcpp", (DL_FUNC) &_fastcats_categorize_rcpp, 0},
-    {"_fastcats_comorbidMatMulWide", (DL_FUNC) &_fastcats_comorbidMatMulWide, 5},
     {"_fastcats_fastIntToStringRcpp", (DL_FUNC) &_fastcats_fastIntToStringRcpp, 1},
+    {"_fastcats_matMulWide", (DL_FUNC) &_fastcats_matMulWide, 5},
     {"_fastcats_factorNoSort", (DL_FUNC) &_fastcats_factorNoSort, 3},
     {"_fastcats_refactor", (DL_FUNC) &_fastcats_refactor, 4},
     {"_fastcats_refactor_narm", (DL_FUNC) &_fastcats_refactor_narm, 3},

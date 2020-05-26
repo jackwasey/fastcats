@@ -5,32 +5,6 @@ categorize_rcpp <- function() {
     .Call(`_fastcats_categorize_rcpp`)
 }
 
-#' @title Comorbidity calculation as a matrix multiplication
-#' @description The problem is that the matrices could be huge: the patient
-#' diagnosis code matrix would be millions of patient rows, and ~15000 columns
-#' for all AHRQ comorbidities.
-#' @details
-#' Several ways of reducing the problem: firstly, as with existing code, we can
-#' drop any codes from the map which are not anywhere in the source data. With
-#' many patients, this will be less effective as the long tail becomes
-#' apparent. However, with the (small) Vermont data, we see ~15,000 codes being
-#' reduced to 339.
-#' @section Sparse matrices:
-#' Using sparse matrices is another solution. Building
-#' the initial matrix may become a significant part of the calculation, but once
-#' done, the solution could be a simple matrix multiplication, which is
-#' potentially highly optimized (Eigen, BLAS, GPU, etc.)
-#' @section Eigen:
-#' Eigen has parallel (non-GPU) optimized sparse row-major * dense matrix. In a
-#' medical example, Patient to diagnosis code matrix must be the row-major
-#' sparse one, so the dense matrix is then the comorbidity map
-#' \url{https://eigen.tuxfamily.org/dox/TopicMultiThreading.html}
-#' @keywords internal array algebra
-#' @noRd
-comorbid_mat_mul_wide_rcpp <- function(data, map, id_name, code_names, validate) {
-    .Call(`_fastcats_comorbidMatMulWide`, data, map, id_name, code_names, validate)
-}
-
 #' @title Convert integers to strings as quickly as possible
 #' @description Have tried R, \code{sprintf} with \CRANpkg{Rcpp} and C++
 #'   standard library. Doesn't do bounds checking, but limited by length of
@@ -41,6 +15,31 @@ comorbid_mat_mul_wide_rcpp <- function(data, map, id_name, code_names, validate)
 #' @noRd
 fastIntToStringRcpp <- function(x) {
     .Call(`_fastcats_fastIntToStringRcpp`, x)
+}
+
+#' @title Categorize data by list of code vectors, using matrix multiplication
+#' @description The problem is that the matrices could be huge, as there are
+#'   many potential codes (columns), in addition to potentially vast numbers of
+#'   rows.
+#' @details
+#' Several ways of reducing the problem: firstly, as with existing code, we can
+#' drop any codes from the map which are not anywhere in the source data. With
+#' many rows, this will be less effective as the long tail becomes
+#' apparent.
+#' @section Sparse matrices:
+#' Using sparse matrices is another solution. Building
+#' the initial matrix may become a significant part of the calculation, but once
+#' done, the solution could be a simple matrix multiplication, which is
+#' potentially highly optimized (Eigen, BLAS, GPU, etc.)
+#' @section Eigen:
+#' Eigen has parallel (non-GPU) optimized sparse row-major * dense matrix. In a
+#' medical example, Patient to diagnosis code matrix must be the row-major
+#' sparse one, so the dense matrix is then the categorization mapping.
+#' \url{https://eigen.tuxfamily.org/dox/TopicMultiThreading.html}
+#' @keywords internal array algebra
+#' @noRd
+mat_mul_wide_rcpp <- function(data, map, id_name, code_names, validate) {
+    .Call(`_fastcats_matMulWide`, data, map, id_name, code_names, validate)
 }
 
 #' @title Factor without sorting \CRANpkg{Rcpp} implementation

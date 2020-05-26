@@ -35,8 +35,8 @@ void buildVisitCodesSparseWide(
   PtsSparse &visMat,
   // output: can get this from sparse matrix at end? Needed?
   VecStr &visitIds);
-LogicalMatrix comorbidMatMulWide(const DataFrame &data,
-                                 const List &map,
-                                 const std::string id_name,
-                                 const CV code_name,
-                                 const bool validate = false);
+LogicalMatrix matMulWide(const DataFrame &data,
+                         const List &map,
+                         const std::string id_name,
+                         const CV code_name,
+                         const bool validate = false);

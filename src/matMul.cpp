@@ -1,5 +1,5 @@
 // [[Rcpp::depends(RcppEigen)]]
-#include "comorbidMatMul.h"
+#include "matMul.h"
 #include "fastIntToString.h"
 #include "fastcats_types.h"
 #include "local.h"
@@ -102,16 +102,15 @@ void buildVisitCodesSparseWide(
   visMat.conservativeResize(visitIds.size(), rh.relevant.size());
 }
 
-//' @title Comorbidity calculation as a matrix multiplication
-//' @description The problem is that the matrices could be huge: the patient
-//' diagnosis code matrix would be millions of patient rows, and ~15000 columns
-//' for all AHRQ comorbidities.
+//' @title Categorize data by list of code vectors, using matrix multiplication
+//' @description The problem is that the matrices could be huge, as there are
+//'   many potential codes (columns), in addition to potentially vast numbers of
+//'   rows.
 //' @details
 //' Several ways of reducing the problem: firstly, as with existing code, we can
 //' drop any codes from the map which are not anywhere in the source data. With
-//' many patients, this will be less effective as the long tail becomes
-//' apparent. However, with the (small) Vermont data, we see ~15,000 codes being
-//' reduced to 339.
+//' many rows, this will be less effective as the long tail becomes
+//' apparent.
 //' @section Sparse matrices:
 //' Using sparse matrices is another solution. Building
 //' the initial matrix may become a significant part of the calculation, but once
@@ -120,12 +119,12 @@ void buildVisitCodesSparseWide(
 //' @section Eigen:
 //' Eigen has parallel (non-GPU) optimized sparse row-major * dense matrix. In a
 //' medical example, Patient to diagnosis code matrix must be the row-major
-//' sparse one, so the dense matrix is then the comorbidity map
+//' sparse one, so the dense matrix is then the categorization mapping.
 //' \url{https://eigen.tuxfamily.org/dox/TopicMultiThreading.html}
 //' @keywords internal array algebra
 //' @noRd
-// [[Rcpp::export(comorbid_mat_mul_wide_rcpp)]]
-LogicalMatrix comorbidMatMulWide(const DataFrame &data,
+// [[Rcpp::export(mat_mul_wide_rcpp)]]
+LogicalMatrix matMulWide(const DataFrame &data,
                                  const List &map,
                                  const std::string id_name,
                                  const CV code_names,

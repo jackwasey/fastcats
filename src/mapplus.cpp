@@ -1,5 +1,5 @@
 #include "mapplus.h"
-#include "comorbidMatMul.h"
+#include "matMul.h"
 #include "fastIntToString.h"
 #include "fastcats_types.h"
 #include "local.h"
@@ -48,7 +48,7 @@ void MapPlus::buildMatrix() {
   assert(Rf_isFactor(map[0]));
   for (auto li = map.begin(); li != map.end(); ++li) {
     const auto col = std::distance(map.begin(), li);
-    TRACE("working on comorbidity: " << col);
+    TRACE("working on mapping set: " << col);
     IntegerVector v(*li);
     for (R_xlen_t vi = 0; vi != v.size(); ++vi) {
       TRACE("cmb: vi=" << vi << " v[vi]=" << v[vi] << " col=" << col);
