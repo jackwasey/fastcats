@@ -19,7 +19,6 @@ LinkingTo:
 Imports: 
     Rcpp
 Suggests: 
-    covr,
     tinytest
 URL: https://github.com/jackwasey/fastcats
 BugReports: https://github.com/jackwasey/fastcats/issues
