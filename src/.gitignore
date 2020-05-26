@@ -1,3 +1,6 @@
 *.o
+*.o.tmp
 *.so
+*.so.tmp
 *.dll
+*.dll.tmp

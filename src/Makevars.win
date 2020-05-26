@@ -3,5 +3,6 @@
 #PKG_LIBS = 
 
 ## With R 3.1.0 or later, you can uncomment the following line to tell R to 
-## enable compilation with C++11 (or even C++14) where available
-#CXX_STD = CXX11
+## enable compilation with C++11 (or even C++14) where available. R 4.0.0
+## defaults to GNU C++11 dialect, but need this for older R versions:
+CXX_STD = CXX11
