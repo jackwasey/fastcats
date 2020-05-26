@@ -15,41 +15,26 @@ knitr::opts_chunk$set(
 
 # fastcats
 
+Fast categorization of data using sets of category members
+
+
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build status](https://travis-ci.com/jackwasey/fastcats.svg?branch=master)](https://travis-ci.com/jackwasey/fastcats)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/jackwasey/fastcats?branch=master&svg=true)](https://ci.appveyor.com/project/jackwasey/fastcats)
 <!-- badges: end -->
 
-The goal of fastcats is to ...
+Using data from one or more columns of input, fastcats assigns a category to each row, using a map. The originating use was to find which type of disease each patient had, based on diagnostic codes. The map is a named list, each containing values belonging to the named category. In the disease example, the map might include an element for heart disease, containing a set of relevant diagnostic codes. For each row of data, the data in the chosen input column or columns are sought in each set in the map. The output is a logical matrix or data frame. With the medical example, each patient is flagged as having, or not having, heart disease, cancer, etc., according to the sets of codes defined in the map.
 
 ## Installation
 
 You can install the released version of fastcats from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
+# when on CRAN
 install.packages("fastcats")
+
+# until then, or for development version
+remotes::install_github("jackwasey/fastcats")
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
-library(fastcats)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!
