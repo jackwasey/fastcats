@@ -15,12 +15,26 @@ cache:
 
 environment:
   NOT_CRAN: true
-  # env vars that may need to be set, at least temporarily, from time to time
-  # see https://github.com/krlmlr/r-appveyor#readme for details
-  # USE_RTOOLS: true
+  USE_RTOOLS: true
   # R_REMOTES_STANDALONE: true
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+    - APPVEYOR_BUILD_WORKER_IMAGE: macOS
+    - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu1804
+    - APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu2004
 
-# Adapt as necessary starting from here
+platform:
+  - x86
+  - x64
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - platform: x86
+    - R_VERSION: devel
+    - APPVEYOR_BUILD_WORK_IMAGE: macOS
+    - APPVEYOR_BUILD_WORK_IMAGE: Ubuntu1804
+    - APPVEYOR_BUILD_WORK_IMAGE: Ubuntu2004
 
 build_script:
   - travis-tool.sh install_deps

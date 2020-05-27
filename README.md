@@ -7,12 +7,8 @@ Fast categorization of data using sets of category members
 
 <!-- badges: start -->
 
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Travis build
-status](https://travis-ci.com/jackwasey/fastcats.svg?branch=master)](https://travis-ci.com/jackwasey/fastcats)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/jackwasey/fastcats?branch=master&svg=true)](https://ci.appveyor.com/project/jackwasey/fastcats)
+[![Travis](https://travis-ci.org/jackwasey/fastcats.svg?branch=master)](https://travis-ci.org/jackwasey/fastcats)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/jackwasey/fastcats?branch=master&svg=true)](https://ci.appveyor.com/project/jackwasey/fastcats)
 <!-- badges: end -->
 
 Using data from one or more columns of input, fastcats assigns a
