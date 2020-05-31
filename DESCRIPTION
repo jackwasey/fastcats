@@ -1,5 +1,6 @@
 Package: fastcats
-Title: Fast categorization of data using sets of category members
+Title: Fast categorization of data using sets of category
+    members
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Jack",
@@ -7,18 +8,28 @@ Authors@R:
            role = c("aut", "cre", "cph"),
            email = "jack@jackwasey.com",
            comment = c(ORCID = "0000-0003-3738-4637"))
-Description: Using data from one or more columns of input, fastcats assigns a category to each row, using a map. The originating use was to find which type of disease each patient had, based on diagnostic codes. The map is a named list, each containing values belonging to the named category. In the disease example, the map might include an element for heart disease, containing a set of relevant diagnostic codes. For each row of data, the data in the chosen input column or columns are sought in each set in the map. The output is a logical matrix or data frame. With the medical example, each patient is flagged as having, or not having, heart disease, cancer, etc., according to the sets of codes defined in the map.
+Description: Using data from one or more columns of input,
+    fastcats assigns a category to each row, using a map. The originating
+    use was to find which type of disease each patient had, based on
+    diagnostic codes. The map is a named list, each containing values
+    belonging to the named category. In the disease example, the map might
+    include an element for heart disease, containing a set of relevant
+    diagnostic codes. For each row of data, the data in the chosen input
+    column or columns are sought in each set in the map. The output is a
+    logical matrix or data frame. With the medical example, each patient
+    is flagged as having, or not having, heart disease, cancer, etc.,
+    according to the sets of codes defined in the map.
 License: GPL-3
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
-LinkingTo: 
-    Rcpp,
-    RcppEigen
+URL: https://github.com/jackwasey/fastcats
+BugReports: https://github.com/jackwasey/fastcats/issues
 Imports: 
     Rcpp
 Suggests: 
     tinytest
-URL: https://github.com/jackwasey/fastcats
-BugReports: https://github.com/jackwasey/fastcats/issues
+LinkingTo: 
+    Rcpp,
+    RcppEigen
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0

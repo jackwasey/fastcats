@@ -1,0 +1,86 @@
+{
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
+  "@type": "SoftwareSourceCode",
+  "identifier": "fastcats",
+  "description": "Using data from one or more columns of input,\n    fastcats assigns a category to each row, using a map. The originating\n    use was to find which type of disease each patient had, based on\n    diagnostic codes. The map is a named list, each containing values\n    belonging to the named category. In the disease example, the map might\n    include an element for heart disease, containing a set of relevant\n    diagnostic codes. For each row of data, the data in the chosen input\n    column or columns are sought in each set in the map. The output is a\n    logical matrix or data frame. With the medical example, each patient\n    is flagged as having, or not having, heart disease, cancer, etc.,\n    according to the sets of codes defined in the map.",
+  "name": "fastcats: Fast categorization of data using sets of category\n    members",
+  "codeRepository": "https://github.com/jackwasey/fastcats",
+  "issueTracker": "https://github.com/jackwasey/fastcats/issues",
+  "license": "https://spdx.org/licenses/GPL-3.0",
+  "version": "0.0.0.9000",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "version": "4.0.0",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 4.0.0 (2020-04-24)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Jack",
+      "familyName": "Wasey",
+      "email": "jack@jackwasey.com",
+      "@id": "https://orcid.org/0000-0003-3738-4637"
+    }
+  ],
+  "contributor": {},
+  "copyrightHolder": [
+    {
+      "@type": "Person",
+      "givenName": "Jack",
+      "familyName": "Wasey",
+      "email": "jack@jackwasey.com",
+      "@id": "https://orcid.org/0000-0003-3738-4637"
+    }
+  ],
+  "funder": {},
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Jack",
+      "familyName": "Wasey",
+      "email": "jack@jackwasey.com",
+      "@id": "https://orcid.org/0000-0003-3738-4637"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tinytest",
+      "name": "tinytest",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tinytest"
+    }
+  ],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "Rcpp",
+      "name": "Rcpp",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=Rcpp"
+    }
+  ],
+  "releaseNotes": "https://github.com/jackwasey/fastcats/blob/master/NEWS.md",
+  "readme": "https://github.com/jackwasey/fastcats/blob/master/README.md",
+  "fileSize": "68.546KB",
+  "contIntegration": [
+    "https://travis-ci.com/jackwasey/fastcats",
+    "https://ci.appveyor.com/project/jackwasey/fastcats"
+  ],
+  "developmentStatus": "https://www.tidyverse.org/lifecycle/#experimental"
+}
